@@ -1,0 +1,49 @@
+#!/usr/bin/perl
+use strict;
+use warnings FATAL => qw(all);
+
+main();
+
+sub main {
+    my @default = ("Go home to wife and kids");
+    my @choose  = $#ARGV >= 0 ? @ARGV : @default;
+    my $choices = scalar @choose;
+    my %wins=();
+
+    while (1) {
+        my $key = int(rand($choices));
+
+        $wins{$key}++;
+
+        if ($wins{$key} >= 10) {
+            print $choose[$key];
+            last;
+        }
+    }
+}
+
+1;
+
+__END__
+
+=head1 NAME
+
+buh.pl is a simple command-line utility helping You to choose someone to drink with whom tonight.
+
+=head1 SYNOPSIS
+
+=over
+
+=item buh.pl
+
+=item buh.pl 'Vanya R' 'Igor F' 'Viktoria E' 'Go home to wife and kids'
+
+=back
+
+=head1 DESCRIPTION
+
+You can run script with your list of choices or use default one.
+
+Pass choices as space-separated agruments.
+
+=cut
