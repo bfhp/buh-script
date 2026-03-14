@@ -2,27 +2,14 @@
 use strict;
 use warnings FATAL => qw(all);
 
-main();
+#!/usr/bin/perl
+use strict;
+use warnings;
 
-sub main {
-    my @default = ("Go home to wife and kids");
-    my @choose  = $#ARGV >= 0 ? @ARGV : @default;
-    my $choices = scalar @choose;
-    my %wins=();
+my @default = ("Go home to wife and kids");
+my @choose  = @ARGV ? @ARGV : @default;
 
-    while (1) {
-        my $key = int(rand($choices));
-
-        $wins{$key}++;
-
-        if ($wins{$key} >= 10) {
-            print $choose[$key];
-            last;
-        }
-    }
-}
-
-1;
+print $choose[ rand @choose ];
 
 __END__
 
